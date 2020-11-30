@@ -48,3 +48,12 @@
     height: 4rem;
     cursor: pointer;
 }
+
+
+.search-history{
+    display: flex;
+}
+.search-history li{
+    margin: 0rem 1rem;
+    padding: 0;
+}

@@ -6,7 +6,7 @@ function Modal(props) {
         props.toggleModalState();
     }
 
-    console.log(props.book);
+    // console.log(props.book);
     return (
         <div className="modal">
             <div className="modal-content">

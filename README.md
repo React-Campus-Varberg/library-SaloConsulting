@@ -1,3 +1,11 @@
+# Lösningen av Peter
+
+Modal och Book component renderas i funktionen App. Jag passar metoder ner till child-component för att bygga funktionaliteten mellan komponenterna. 
+
+Jag använder mig även av en custom hook i en egen fil där jag lagrar senast "in focus" bok som har visats i modal. Jag klurar fortfarande om på detta är ett bra sätt, för att kanske i framtiden passa custom hook till komponenter som inte har någon relation till child eller parent, t.ex. en footer. 
+
+
+
 # Övning
 
 I denna övning ska du göra ett bibliotek av barnböcker. Du hittar en JSON-fil med böcker i mappen ```assets```. Du ska enbart använda dig av funktionella komponenter med React Hooks.

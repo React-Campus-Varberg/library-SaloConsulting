@@ -13,8 +13,6 @@ function App(props){
     const [toggleModal, setToggleModal] = useState(false);
     const [customHookModalHistoryState, setCustomHookModalHistoryState] = useCustomHookModalHistory(null);
 
-    
-
     //Close the modal
     function closeModal(book) {
         setToggleModal(false);
@@ -25,13 +23,14 @@ function App(props){
         setToggleModal(true);//Toggle the modal
         setBookFocus(book.highlightBook);//Current book object to be highlighted by modal
         setCustomHookModalHistoryState(book.highlightBook.title);//Save the object to modal history
+        // console.log(customHookModalHistoryState);
     }
 
     //Kör useEffect en gång vid första renderingen samma som livscykelmetoden componentDidMount
     useEffect(() => {
         async function getTodos() {
             const data = await (BooksFile);
-            setBooks(data)
+            setBooks(data);
         }
 
         getTodos();
@@ -45,11 +44,20 @@ function App(props){
     return (
         <article className="todo-app">
             <h1>{props.title}</h1>
-            <h2>{customHookModalHistoryState}</h2>
-            <div className="book-wrapper">
-                { books && books.map((book, index) => {
-                    return <Book item={ book } key={ index } updateState={ showModal } />
-                }) }
+            <div>
+                <h2>Search history</h2>
+                <ul className="search-history">
+                    {customHookModalHistoryState.map(title => <li>{title}</li>)}
+                </ul>
+            </div>
+
+            <div>
+                <h2>All Books</h2>
+                <div className="book-wrapper">
+                    { books && books.map((book, index) => {
+                        return <Book item={ book } key={ index } updateState={ showModal } />
+                    }) }
+                </div>
             </div>
             {/* Show modal with current book as a parameter */}
             { toggleModal ? <Modal toggleModalState={ closeModal } book={bookFocus}/> : false }
